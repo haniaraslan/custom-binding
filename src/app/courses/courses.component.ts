@@ -40,4 +40,14 @@ courses = [
   description: 'course description'
 },
 ]
+
+GetTotalCourses(){
+  return this.courses.length;
+}
+GetTotalFreeCourses(){
+  return this.courses.filter(course => course.type == 'Free').length;
+}
+GetTotalPremiumCourses(){
+  return this.courses.filter(course => course.type == 'Premium').length;
+}
 }
