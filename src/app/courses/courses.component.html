@@ -3,23 +3,26 @@
     <app-filter
      [total]="GetTotalCourses()" 
      [free]="GetTotalFreeCourses()"
-     [premium]="GetTotalPremiumCourses()">
+     [premium]="GetTotalPremiumCourses()"
+     (filterRadioButtonSelectionChanged)="onFilterRadioButtionChanged($event)">
     </app-filter>
 </div>
-<div class="courses-container" *ngFor = "let course of courses">
-    <div class = "course-card">
-        <div >
-            <img [src]="course.image" style="height: 140px; width: 220px;">
-        </div>
-        <div><p class = "title">{{course.name}}</p></div>
-        <div><p class="description">{{course.description}}</p></div>
-        <div class = "details-container">
-            <div class = "course-type" [ngStyle]="{color: course.type == 'free'? 'Green': 'Red'}">{{course.type}}</div>
-            <div class = "course-price"><b>Price:</b> ${{course.price}}</div>
-        </div>
-        <div class="buttons">
-                <button class="btn btn-warning">Buy Now</button>
-                <button class="btn btn-success">Show Details</button>
+<ng-container *ngFor = "let course of courses">
+    <div class="courses-container" *ngIf = "courseCountRadioButton === 'All' || courseCountRadioButton === course.type">
+        <div class = "course-card">
+            <div >
+                <img [src]="course.image" style="height: 140px; width: 220px;">
+            </div>
+            <div><p class = "title">{{course.name}}</p></div>
+            <div><p class="description">{{course.description}}</p></div>
+            <div class = "details-container">
+                <div class = "course-type" [ngStyle]="{color: course.type == 'free'? 'Green': 'Red'}">{{course.type}}</div>
+                <div class = "course-price"><b>Price:</b> ${{course.price}}</div>
+            </div>
+            <div class="buttons">
+                    <button class="btn btn-warning">Buy Now</button>
+                    <button class="btn btn-success">Show Details</button>
+            </div>
         </div>
     </div>
-</div>
+</ng-container>

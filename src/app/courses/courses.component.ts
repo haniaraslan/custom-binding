@@ -50,4 +50,11 @@ GetTotalFreeCourses(){
 GetTotalPremiumCourses(){
   return this.courses.filter(course => course.type == 'Premium').length;
 }
+
+courseCountRadioButton: string = 'All';
+
+onFilterRadioButtionChanged(data: string){
+  this.courseCountRadioButton = data;
+  console.log(this.courseCountRadioButton);
+}
 }
