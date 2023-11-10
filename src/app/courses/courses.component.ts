@@ -52,9 +52,13 @@ GetTotalPremiumCourses(){
 }
 
 courseCountRadioButton: string = 'All';
-
+searchValue : string = "";
 onFilterRadioButtionChanged(data: string){
   this.courseCountRadioButton = data;
   console.log(this.courseCountRadioButton);
+}
+onSearchValueChanged(data:string){
+  this.searchValue = data;
+  console.log(this.searchValue);
 }
 }
